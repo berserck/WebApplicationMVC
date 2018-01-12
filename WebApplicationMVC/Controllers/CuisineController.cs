@@ -9,9 +9,10 @@ namespace WebApplicationMVC.Controllers
     public class CuisineController : Controller
     {
         // GET: Cuisine
-        public ActionResult Search()
+        public ActionResult Search(string name)
         {
-            return Content("TODO Search view for cuisine: "+ RouteData.Values["Name"]);
+            var message = Server.HtmlEncode(name);
+            return Content("TODO Search view for cuisine: "+ message);
         }
     }
 }
