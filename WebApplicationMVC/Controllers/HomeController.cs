@@ -10,6 +10,8 @@ namespace WebApplicationMVC.Controllers
     {
         public ActionResult Index()
         {
+            var controller = RouteData.Values["controller"];
+
             return View();
         }
 
