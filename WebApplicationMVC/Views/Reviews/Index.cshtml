@@ -1,0 +1,9 @@
+﻿@model WebApplicationMVC.Models.Restaurant
+
+
+<h2>Reviews for @Model.Name</h2>
+
+@Html.Partial("_ReviewsView", Model.Reviews)
+<p>
+    @Html.ActionLink("Create New", "Create", new {restaurantId = Model.Id})
+</p>
