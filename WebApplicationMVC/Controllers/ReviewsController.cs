@@ -9,6 +9,14 @@ namespace WebApplicationMVC.Content
 {
     public class ReviewsController : Controller
     {
+        public ActionResult BestReview()
+        {
+            var bestReview = from r in _reviews
+                orderby r.Rating descending
+                select r;
+
+            return PartialView("_Review", bestReview.First());
+        }
         // GET: Reviews
         public ActionResult Index()
         {
