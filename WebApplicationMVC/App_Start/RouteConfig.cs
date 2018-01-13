@@ -17,7 +17,7 @@ namespace WebApplicationMVC
             routes.MapRoute(
                 name: "",
                 url: "cuisine/{name}",
-                defaults: new { controller = "Cuisine", action="Search", name=""}
+                defaults: new { controller = "Cuisine", action="Search", name = UrlParameter.Optional }
                 );
 
             routes.MapRoute(
