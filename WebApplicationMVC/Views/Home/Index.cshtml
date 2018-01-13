@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplicationMVC.Models.Restaurant>
+﻿@model IEnumerable<WebApplicationMVC.Models.RestaurantListViewModel>
 
 @{
     ViewBag.Title = "Home Page";
@@ -10,6 +10,9 @@
     <div>
         <h4>@item.Name</h4>
         <div>@item.City, @item.Country</div>
+        <div>
+            Reviews: @item.CountOfReviews
+        </div>
         <hr />
     </div>
 }
