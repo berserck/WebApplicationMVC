@@ -10,7 +10,10 @@ namespace WebApplicationMVC.Controllers
 
         public ActionResult Index()
         {
-            var model = _db.Restaurants.ToList();
+            var model = from r in _db.Restaurants
+                orderby r.Reviews.Count() descending 
+                select r;
+
             return View(model);
         }
 
