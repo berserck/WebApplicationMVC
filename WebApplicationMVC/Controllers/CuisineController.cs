@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplicationMVC.Filters;
 
 namespace WebApplicationMVC.Controllers
 {
     public class CuisineController : Controller
     {
         // GET: Cuisine
+        //[Authorize]
+        [Log]
         public ActionResult Search(string name)
         {
             var message = Server.HtmlEncode(name);
