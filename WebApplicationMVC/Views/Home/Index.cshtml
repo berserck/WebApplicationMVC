@@ -6,21 +6,23 @@
 
 <h1>Restaurants</h1>
 
-@*<form method="get">
-        <input type="search" name="searchTerm"/>
-        <input type="submit" value="Search by name"/>
-    </form>*@
+<form method="get" action="@Url.Action("Index")"
+      data-otf-ajax="true" data-otf-target="#restaurantList">
 
-@using (Ajax.BeginForm(
-    new AjaxOptions
-    {
-        HttpMethod = "Get",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "restaurantList"
-    }))
-{
     <input type="search" name="searchTerm" />
     <input type="submit" value="Search by name" />
-}
+</form>
+
+@*@using (Ajax.BeginForm(
+        new AjaxOptions
+        {
+            HttpMethod = "Get",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "restaurantList"
+        }))
+    {
+        <input type="search" name="searchTerm" />
+        <input type="submit" value="Search by name" />
+    }*@
 
 @Html.Partial("_RestaurantList")

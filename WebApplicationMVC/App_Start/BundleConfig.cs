@@ -13,8 +13,8 @@ namespace WebApplicationMVC
                 "~/Scripts/jquery.unobtrusive*",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js",
-                "~/Scripts/jquery.validate*"
-
+                "~/Scripts/jquery.validate*",
+                "~/Scripts/otf.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
