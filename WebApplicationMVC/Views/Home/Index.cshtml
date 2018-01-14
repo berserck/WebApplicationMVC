@@ -6,19 +6,33 @@
 
 <h1>Restaurants</h1>
 
-<form method="get">
-    <input type="search" name="searchTerm"/>
-    <input type="submit" value="Search by name"/>
-</form>
+@*<form method="get">
+        <input type="search" name="searchTerm"/>
+        <input type="submit" value="Search by name"/>
+    </form>*@
 
-@foreach (var item in Model)
+@using (Ajax.BeginForm(
+    new AjaxOptions
+    {
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "restaurantList"
+    }))
 {
-    <div>
-        <h4>@item.Name</h4>
-        <div>@item.City, @item.Country</div>
-        <div>
-            Reviews: @item.CountOfReviews
-        </div>
-        <hr />
-    </div>
+    <input type="search" name="searchTerm" />
+    <input type="submit" value="Search by name" />
 }
+
+<div id="restaurantList">
+    @foreach (var item in Model)
+    {
+        <div>
+            <h4>@item.Name</h4>
+            <div>@item.City, @item.Country</div>
+            <div>
+                Reviews: @item.CountOfReviews
+            </div>
+            <hr />
+        </div>
+    }
+</div>
