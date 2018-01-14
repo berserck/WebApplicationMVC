@@ -13,7 +13,9 @@ namespace WebApplicationMVC.Migrations
             ContextKey = "WebApplicationMVC.Models.OdeToFoodDb";
         }
 
-        protected override void Seed(OdeToFoodDb context) => context.Restaurants.AddOrUpdate(r => r.Name,
+        protected override void Seed(OdeToFoodDb context)
+        {
+            context.Restaurants.AddOrUpdate(r => r.Name,
                 new Restaurant { Name = "Sabatino's", City = "Baltimore", Country = "USA" },
                 new Restaurant { Name = "Great Lake", City = "Chicago", Country = "USA" },
                 new Restaurant
@@ -22,9 +24,17 @@ namespace WebApplicationMVC.Migrations
                     City = "Gothenburg",
                     Country = "Sweden",
                     Reviews =
-                        new List<RestaurantReview> {
-                            new RestaurantReview { Rating = 9, Body="Great food!", ReviewerName = "Scott" }
+                        new List<RestaurantReview>
+                        {
+                            new RestaurantReview {Rating = 9, Body = "Great food!", ReviewerName = "Scott"}
                         }
                 });
+
+            for (int i = 0; i < 1000; i++)
+            {
+                context.Restaurants.AddOrUpdate(r => r.Name, new Restaurant { Name = i.ToString(), City = "Nowhere", Country = "USA" });
+            }
+        }
+
     }
 }
