@@ -10,6 +10,7 @@ namespace WebApplicationMVC
 
             bundles.Add(new ScriptBundle("~/bundles/otf").Include(
                 "~/Scripts/jquery-{version}.js",
+                "~/Scripts/jquery-ui-{version}.js",
                 "~/Scripts/jquery.unobtrusive*",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js",
@@ -34,6 +35,7 @@ namespace WebApplicationMVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/themes/base/jquery-ui.css",
                       "~/Content/site.css"));
         }
     }

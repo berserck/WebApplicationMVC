@@ -7,9 +7,9 @@
 <h1>Restaurants</h1>
 
 <form method="get" action="@Url.Action("Index")"
-      data-otf-ajax="true" data-otf-target="#restaurantList">
+      data-otf-ajax="true" data-otf-target="#restaurantList" >
 
-    <input type="search" name="searchTerm" />
+    <input type="search" name="searchTerm" data-otf-autocomplete="@Url.Action("Autocomplete")"/>
     <input type="submit" value="Search by name" />
 </form>
 
