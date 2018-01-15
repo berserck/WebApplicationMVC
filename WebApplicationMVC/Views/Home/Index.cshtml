@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplicationMVC.Models.RestaurantListViewModel>
+﻿@model PagedList.IPagedList<WebApplicationMVC.Models.RestaurantListViewModel>
 
 @{
     ViewBag.Title = "Home Page";
@@ -25,4 +25,4 @@
         <input type="submit" value="Search by name" />
     }*@
 
-@Html.Partial("_RestaurantList")
+@Html.Partial("_RestaurantList", Model)

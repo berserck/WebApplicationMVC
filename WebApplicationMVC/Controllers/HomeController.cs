@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using WebApplicationMVC.Models;
+using PagedList;
 
 namespace WebApplicationMVC.Controllers
 {
@@ -18,12 +19,12 @@ namespace WebApplicationMVC.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Index(string searchTerm = null)
+        public ActionResult Index(string searchTerm = null, int page = 1)
         {
+            const int pageSize = 10;
             var model = _db.Restaurants
                 .OrderByDescending(r => r.Reviews.Average(review => review.Rating))
                 .Where(r => searchTerm == null || r.Name.StartsWith(searchTerm))
-                .Take(10)
                 .Select(r => new RestaurantListViewModel
                 {
                     Id = r.Id,
@@ -31,7 +32,9 @@ namespace WebApplicationMVC.Controllers
                     City = r.City,
                     Country = r.Country,
                     CountOfReviews = r.Reviews.Count()
-                });
+                })
+                .ToPagedList(page, pageSize)
+                ;
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_RestaurantList", model);
