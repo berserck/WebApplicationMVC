@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebApplicationMVC.Models;
 
@@ -27,9 +28,7 @@ namespace WebApplicationMVC.Tests.Features
         [TestMethod]
         public void Computes_Result_for_one_review()
         {
-            var data = new Restaurant();
-            data.Reviews = new List<RestaurantReview>();
-            data.Reviews.Add(new RestaurantReview(){Rating = 4});
+            var data = BuildRestaurantAndReviews(4);
 
             var rater = new RestaurantRater(data);
             var result = rater.ComputeRating(10);
@@ -40,10 +39,7 @@ namespace WebApplicationMVC.Tests.Features
         [TestMethod]
         public void Computes_Result_for_Two_reviews()
         {
-            var data = new Restaurant();
-            data.Reviews = new List<RestaurantReview>();
-            data.Reviews.Add(new RestaurantReview(){Rating = 4});
-            data.Reviews.Add(new RestaurantReview(){Rating = 8});
+            var data = BuildRestaurantAndReviews(4, 8);
 
             var rater = new RestaurantRater(data);
             var result = rater.ComputeRating(10);
@@ -51,5 +47,12 @@ namespace WebApplicationMVC.Tests.Features
             Assert.AreEqual(6, result.Rating);
         }
 
+        private Restaurant BuildRestaurantAndReviews(params int[] ratings)
+        {
+            var restaurant = new Restaurant();
+            restaurant.Reviews = ratings.Select(r => new RestaurantReview { Rating = r })
+                .ToList();
+            return restaurant;
+        }
     }
 }
