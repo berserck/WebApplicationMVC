@@ -59,6 +59,7 @@ namespace WebApplicationMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Restaurant restaurant = _db.Query<Restaurant>().Single(r => r.Id == id);
+            if (restaurant == null)
             {
                 return HttpNotFound();
             }
