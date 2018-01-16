@@ -12,11 +12,10 @@ namespace WebApplicationMVC.Tests.Features
             this._restaurant = restaurant;
         }
 
-        public RatingResult ComputeRating( int numberOfReviews)
+        public RatingResult ComputeResult(IRatingAlgorithm algorithm, int numberOfReviewsToUse)
         {
-            var result = new RatingResult();
-            result.Rating = (int) _restaurant.Reviews.Average(r => r.Rating);
-            return result;
+            var filteredReviews = _restaurant.Reviews.Take(numberOfReviewsToUse);
+            return algorithm.Compute(filteredReviews.ToList());
         }
     }
 }
