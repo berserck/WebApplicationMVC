@@ -8,7 +8,7 @@ namespace WebApplicationMVC.Controllers
 {
     public class HomeController : Controller
     {
-        IOdeToFoodDb _db;
+        readonly IOdeToFoodDb _db;
 
         public HomeController()
         {
