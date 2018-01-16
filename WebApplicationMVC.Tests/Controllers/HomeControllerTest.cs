@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebApplicationMVC;
 using WebApplicationMVC.Controllers;
+using WebApplicationMVC.Models;
 using WebApplicationMVC.Tests.Fakes;
 
 namespace WebApplicationMVC.Tests.Controllers
@@ -20,12 +21,15 @@ namespace WebApplicationMVC.Tests.Controllers
             var db = new FakeOdeToFoodDb();
             db.AddSet(TestData.Restaurants);
             HomeController controller = new HomeController(db);
-
+            controller.ControllerContext = new FakeControllerContext();
             // Act
             ViewResult result = controller.Index() as ViewResult;
 
-            // Assert
-            Assert.IsNotNull(result);
+            IEnumerable<RestaurantListViewModel> model = result.Model as IEnumerable<RestaurantListViewModel>;
+
+            // Assert we get 10 restaurants in the list
+            Assert.AreEqual(10, model.Count());
+
         }
 
         [TestMethod]
