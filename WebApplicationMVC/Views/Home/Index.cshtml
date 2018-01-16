@@ -26,3 +26,15 @@
     }*@
 
 @Html.Partial("_RestaurantList", Model)
+
+@{
+    var amount = 10.0m;
+    var someDate = DateTime.Today;
+}
+
+<div>
+    @amount.ToString("c")
+</div>
+<div>
+    @someDate.ToShortDateString()
+</div>
