@@ -87,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\RestaurantControllerTests.cs" />
     <Compile Include="Fakes\FakeControllerContext.cs" />
     <Compile Include="Fakes\FakeOdeToFoodDB.cs" />
     <Compile Include="TestData.cs" />
