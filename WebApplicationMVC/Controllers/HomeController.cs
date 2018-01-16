@@ -19,16 +19,7 @@ namespace WebApplicationMVC.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
-        [ChildActionOnly]
         [OutputCache(Duration = 60)]
-        public ActionResult SleepSayHello()
-        {
-
-            System.Threading.Thread.Sleep(5000);
-            return Content("Hello!");
-        }
-
-        [OutputCache(Duration = 10)]
         public ActionResult Index(string searchTerm = null, int page = 1)
         {
             const int pageSize = 10;
